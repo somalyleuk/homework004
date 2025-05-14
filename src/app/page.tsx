@@ -1,103 +1,193 @@
+import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faAward,
+  faBookOpen,
+  faUserGroup,
+} from "@fortawesome/free-solid-svg-icons";
+
+export const metadata: Metadata = {
+  title: "Home - E-Learning",
+  description:
+    "Learn without limits with E-Learning. Discover thousands of courses taught by industry experts.",
+  openGraph: {
+    title: "Home - E-Learning",
+    description:
+      "Learn without limits with E-Learning. Discover thousands of courses taught by industry experts.",
+    url: "https://homework004-alpha.vercel.app/",
+    images: ["/online-learning.gif"],
+  },
+};
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const featuredCourses = [
+    {
+      title: "Complete Web Development",
+      image: "/webdeveloper_cource.jpg",
+      description:
+        "Learn HTML, CSS, JavaScript, React, Node.js and more to become a full-stack developer",
+      price: 89.99,
+      reviews: 350,
+    },
+    {
+      title: "Data Science and Machine Learning",
+      image: "/ai.png",
+      description:
+        "Master data analysis, visualization, and machine learning algorithms",
+      price: 89.99,
+      reviews: 350,
+    },
+    {
+      title: "UI/UX Design Masterclass",
+      image: "/ux_ui.png",
+      description:
+        "Create stunning user interfaces and improve user experience",
+      price: 89.99,
+      reviews: 350,
+    },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <main className="min-h-screen">
+      <section className="container mx-auto flex max-w-7xl flex-col items-center justify-between p-6 md:flex-row">
+        <article className="mb-8 text-center md:mb-0 md:text-left">
+          <span className="rounded-full bg-blue-100 px-3 py-1 text-sm font-semibold text-blue-900">
+            New Courses Available
+          </span>
+          <h1 className="mt-4 text-4xl font-bold text-gray-900 md:text-5xl">
+            Learn Without Limits
+          </h1>
+          <p className="mt-4 text-lg text-gray-600">
+            Discover thousands of courses taught by industry experts and enhance
+            your skills at your own pace.
+          </p>
+          <div className="mt-6 space-x-4">
+            <Link
+              href="/signup"
+              className="rounded-full bg-blue-900 px-6 py-3 text-white hover:bg-blue-700">
+              Get Started
+            </Link>
+            <Link
+              href="/courses"
+              className="rounded-full border border-blue-900 px-6 py-3 text-blue-900 hover:border-blue-600 hover:text-blue-600">
+              Explore Courses
+            </Link>
+          </div>
+        </article>
+        <figure className="w-full md:w-1/2">
+          <Image
+            src="/online-learning.gif"
+            alt="Online Learning"
+            width={500}
+            height={300}
+            className="h-auto w-full rounded-lg"
+          />
+        </figure>
+      </section>
+
+      <section className="container mx-auto max-w-7xl py-12">
+        <div className="mb-8 flex flex-col justify-between md:flex-row">
+          <h2 className="mb-4 text-2xl font-bold text-gray-900">
+            Featured Courses
+          </h2>
+          <Link href="/courses" className="text-blue-600 hover:underline">
+            View all courses
+          </Link>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {featuredCourses.map((course) => (
+            <article
+              key={course.title}
+              className="rounded-lg bg-white p-6 shadow-md">
+              <Image
+                src={course.image}
+                alt={course.title}
+                width={500}
+                height={300}
+                className="mb-4 h-48 w-full object-cover rounded"
+              />
+              <h3 className="text-xl font-semibold text-gray-900">
+                {course.title}
+              </h3>
+              <p className="mb-4 text-gray-600">{course.description}</p>
+              <div className="flex items-center justify-between">
+                <span className="text-yellow-500">
+                  ★★★★☆ ({course.reviews})
+                </span>
+                <span className="font-bold text-gray-900">${course.price}</span>
+              </div>
+              <button className="mt-4 w-full rounded border border-blue-600 px-4 py-2 text-blue-600 hover:bg-blue-50 hover:text-blue-700">
+                View Course
+              </button>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="container mx-auto max-w-7xl py-12">
+        <h2 className="mb-6 text-center text-2xl font-bold text-gray-900">
+          Why Choose E-Learning?
+        </h2>
+        <p className="mb-8 text-center text-gray-600">
+          Our platform is designed to provide the best learning experience with
+          features that help you succeed.
+        </p>
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {[
+            {
+              icon: faBookOpen,
+              title: "Expert Instructors",
+              description:
+                "Learn from industry professionals with years of experience.",
+            },
+            {
+              icon: faUserGroup,
+              title: "Interactive Community",
+              description:
+                "Engage with peers and instructors through forums and live sessions.",
+            },
+            {
+              icon: faAward,
+              title: "Certified Courses",
+              description:
+                "Earn certificates to showcase your skills and advance your career.",
+            },
+          ].map((feature) => (
+            <article key={feature.title} className="text-center">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 mx-auto">
+                <FontAwesomeIcon
+                  icon={feature.icon}
+                  className="text-blue-600"
+                  size="lg"
+                />
+              </div>
+              <h3 className="font-semibold text-gray-900">{feature.title}</h3>
+              <p className="text-gray-600">{feature.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-blue-600 py-12 text-center text-white">
+        <h2 className="mb-4 text-2xl font-bold">Ready to Start Learning?</h2>
+        <p className="mb-6">
+          Join thousands of students advancing their careers with E-Learning.
+        </p>
+        <div className="flex justify-center space-x-4">
+          <Link
+            href="/signup"
+            className="rounded bg-white px-4 py-2 text-blue-600 hover:bg-gray-100">
+            Get Started for Free
+          </Link>
+          <Link
+            href="/courses"
+            className="rounded bg-white px-4 py-2 text-blue-600 hover:bg-gray-100">
+            View Courses
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 }
